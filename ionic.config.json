@@ -1,0 +1,7 @@
+{
+  "name": "EVAssistant",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
