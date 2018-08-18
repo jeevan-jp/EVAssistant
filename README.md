@@ -10,6 +10,10 @@
 
         git clone https://github.com/jeevan-jp/EVAssistant.git
 
+* Visit the directory in command window and install dependencies
+
+        npm install
+
 * run server
 
         ionic serve --lab
