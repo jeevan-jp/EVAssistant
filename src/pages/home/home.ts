@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { baseURL } from '../../shared/baseurl';
 
 @Component({
@@ -9,11 +9,9 @@ import { baseURL } from '../../shared/baseurl';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController, public http: Http) {
+  constructor(public navCtrl: NavController, private http: HttpClient) { }
 
-  }
-
-  public handleSuccess (pos: any) {
+  handleSuccess = (pos: any) => {
         console.log(pos);
         const position = {
             "latitude": pos.coords.latitude,
@@ -26,8 +24,7 @@ export class HomePage {
         let header = new Headers();
         header.append('Content-Type', 'application/json');
   
-        this.http
-          .post(baseURL + 'nearest_station', body)
+        this.http.get(baseURL + 'dishes')
             .subscribe((data) => {
                   console.log(data);
                   alert('ok')
