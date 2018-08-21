@@ -11,4 +11,25 @@ export class HomePage {
 
   }
 
+  handleSuccess = (pos) => {
+        console.log(pos);
+  };
+
+  handleError = (err) => {
+    err = JSON.stringify(err) || "error";
+    console.log(err);
+  }
+
+  options = {
+    enableHighAccuracy: true,
+    timeout: Infinity,
+    maximumAge: 0
+  };
+
+  getChargingStation() {
+    if(navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(this.handleSuccess, this.handleError, this.options)
+    }
+  }
+
 }
