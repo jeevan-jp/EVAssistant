@@ -13,7 +13,7 @@ export class HomePage {
 
   }
 
-  handleSuccess = (pos) => {
+  public handleSuccess (pos: any) {
         console.log(pos);
         const position = {
             "latitude": pos.coords.latitude,
@@ -27,7 +27,7 @@ export class HomePage {
         header.append('Content-Type', 'application/json');
   
         this.http
-          .post(baseURL + '/nearest_station', body)
+          .post(baseURL + 'nearest_station', body)
             .subscribe((data) => {
                   console.log(data);
                   alert('ok')
