@@ -1,6 +1,13 @@
 # Electric-Vehicle-Assistant
+============================
 
-## Setting up locally
+##Project Structure 
+    
+    .
+    ├── Frontend                   # Main ionic app
+    ├── Backend                    # express server 
+    └── README.md 
+## Setting up frontend locally
 
 * Install ionic and cordova globally
 
