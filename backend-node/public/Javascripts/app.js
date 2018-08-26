@@ -16,7 +16,7 @@ $(function(){
 
             $.each(products, function(index, product ) {
 
-                string += '<tr><td>'+(index+1)+'</td><td>'+product['_id']+'</td><td>'+product['name']+'</td><td>'+product['category']+'</td><td>'+product['price']+'</td><td>'+product['manufacturer']+'</td></tr>';
+                string += '<tr><td>'+product['SNo']+'</td><td>'+product['_id']+'</td><td>'+product['Concession']+'</td><td>'+product['Area']+'</td><td>'+product['sitecode']+'</td><td>'+product['stopName']+'</td><td>'+product['RoadName']+'</td><td>'+product['Towards']+'</td><td>'+product['coordinates']+'</td></tr>';
 
             });
 
@@ -29,7 +29,7 @@ $(function(){
 
     $("#importdata").on('click', function(){
 
-        $.get( "/import", function( data ) {
+        $.get( "/data/import", function( data ) {
 
             $("#message").show().html(data['success']);
 
