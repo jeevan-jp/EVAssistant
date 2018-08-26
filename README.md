@@ -28,3 +28,7 @@
 * open following link in your browser:
 
         http://localhost:8100/ionic-lab
+
+ ## Setting up data locally 
+ * open cmd and run following command:
+        ./mongoimport -d dbname -c 1.csv --type csv --file pathof file
