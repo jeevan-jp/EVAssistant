@@ -12,6 +12,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { NearestStationProvider } from '../providers/nearest-station/nearest-station';
 import { ProcessHttpmsgProvider } from '../providers/process-httpmsg/process-httpmsg';
 import { LoginPage } from '../pages/login/login';
+import { RegisterPage } from '../pages/register/register';
 // import { RegisterPage } from '../pages/register/register';
 
 
@@ -20,6 +21,7 @@ import { LoginPage } from '../pages/login/login';
     MyApp,
     HomePage,
     AboutPage,
+    
     LoginPage,
     
   ],
@@ -33,7 +35,9 @@ import { LoginPage } from '../pages/login/login';
     MyApp,
     HomePage,
     AboutPage,
+  
     LoginPage,
+    
     
   ],
   providers: [
