@@ -12,13 +12,16 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { NearestStationProvider } from '../providers/nearest-station/nearest-station';
 import { ProcessHttpmsgProvider } from '../providers/process-httpmsg/process-httpmsg';
 import { LoginPage } from '../pages/login/login';
+// import { RegisterPage } from '../pages/register/register';
+
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     AboutPage,
-    LoginPage
+    LoginPage,
+    
   ],
   imports: [
     BrowserModule,
@@ -30,7 +33,8 @@ import { LoginPage } from '../pages/login/login';
     MyApp,
     HomePage,
     AboutPage,
-    LoginPage
+    LoginPage,
+    
   ],
   providers: [
     StatusBar,
