@@ -61,6 +61,7 @@ app.use(function(err, req, res, next) {
         res.status(err.status || 500);
         res.render('error');
       });
+app.listen(3333,()=>{console.log("server is running on port 3333")})
       
  module.exports = app;
         
