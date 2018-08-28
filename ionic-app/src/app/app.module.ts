@@ -11,12 +11,19 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { NearestStationProvider } from '../providers/nearest-station/nearest-station';
 import { ProcessHttpmsgProvider } from '../providers/process-httpmsg/process-httpmsg';
+import { LoginPage } from '../pages/login/login';
+import { RegisterPage } from '../pages/register/register';
+// import { RegisterPage } from '../pages/register/register';
+
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    AboutPage
+    AboutPage,
+    
+    LoginPage,
+    
   ],
   imports: [
     BrowserModule,
@@ -27,7 +34,11 @@ import { ProcessHttpmsgProvider } from '../providers/process-httpmsg/process-htt
   entryComponents: [
     MyApp,
     HomePage,
-    AboutPage
+    AboutPage,
+  
+    LoginPage,
+    
+    
   ],
   providers: [
     StatusBar,

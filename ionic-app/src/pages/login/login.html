@@ -7,12 +7,28 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>LoginPage</ion-title>
+    <ion-title>In trouble Login plz</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
+     <img src="assets/imgs/Loginlogo.png" alt = "logo" class = "logo">
+     <ion-card>
+         <ion-card-content>
+           <ion-label stacked >Email Address</ion-label>
+           <ion-input type = "text">  </ion-input>
+         </ion-card-content>
+         <ion-card-content>
+          <ion-label stacked >Password</ion-label>
+          <ion-input type = "password">  </ion-input>
+        </ion-card-content>
+        <ion-row>
+          <div>
+          <button ion-button (click) = "navigateToPage('RegisterPage')"  color = "secondary">Register</button>
+          <button ion-button color = "primary">Login</button>
+        </div>
+        </ion-row>
+     </ion-card>
 </ion-content>
