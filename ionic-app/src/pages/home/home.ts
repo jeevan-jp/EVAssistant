@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, Platform } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
-import { baseURL } from '../../shared/baseurl';
+import { ToastController } from 'ionic-angular';
 
 @Component({
   selector: 'page-home',
@@ -9,13 +9,18 @@ import { baseURL } from '../../shared/baseurl';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController, private http: HttpClient) { }
+  public isNearestStation = false;
+
+  constructor(public navCtrl: NavController, private http: HttpClient,
+    public platform: Platform, public toastCtrl: ToastController) { }
 
   handleSuccess = (pos: any) => {
+        const latitude = pos.coords.latitude;
+        const longitude = pos.coords.longitude;
         console.log(pos);
         const position = {
-            "latitude": pos.coords.latitude,
-            "longitude": pos.coords.longitude,
+            "latitude": latitude,
+            "longitude": longitude,
             "accuracy": pos.coords.accuracy
         }
         const body = JSON.stringify(position);
@@ -24,13 +29,55 @@ export class HomePage {
         let header = new Headers();
         header.append('Content-Type', 'application/json');
   
-        this.http.get(baseURL + 'dishes')
-            .subscribe((data) => {
-                  console.log(data);
-                  alert('ok')
-            }, error => {
-                console.log(JSON.stringify(error.json()));
+        // let scheme;
+        const LOCATION = `${latitude},${longitude}`;
+        
+        this.isNearestStation = true;
+ 
+        // Don't forget to add the org.apache.cordova.device plugin!
+        let platformName;
+        if(this.platform.is('ios')) {
+          platformName = 'iOS';
+        }
+        if(this.platform.is('android')) {
+          platformName = 'Android';
+        }
+        if(platformName === 'iOS') {
+            // scheme = 'twitter://';
+            window.open(`comgooglemaps://?q=${LOCATION}`, "_system");
+        }
+        else if(platformName === 'Android') {
+            // scheme = 'com.twitter.android';
+            // window.open('geo:?daddr=28.6562833,77.116675', "_system");
+            // let options: LaunchNavigatorOptions = {
+            //   start: 'London, ON',
+            //   app: LaunchNavigator.APP.GOOGLE_MAPS
+            // };
+            
+            // this.launchNavigator.navigate('Toronto, ON', options)
+            //   .then(
+            //     success => console.log('Launched navigator'),
+            //     error => console.log('Error launching navigator', error)
+            //   );
+            const toast = this.toastCtrl.create({
+              message: 'Nearest:Tagore Garden Extension',
+              duration: 3000
             });
+            toast.present();
+            document.getElementById('openMap').style.display = 'block';
+        }
+
+        // appAvailability.check(
+        //   scheme, // URI Scheme
+        //   function() {  // Success callback
+        //       window.open('twitter://user?screen_name=gajotres', '_system', 'location=no');
+        //       console.log('Twitter is available');
+        //   },
+        //   function() {  // Error callback
+        //       window.open('https://twitter.com/gajotres', '_system', 'location=no');
+        //       console.log('Twitter is not available');
+        //   }
+        // );
   };
 
   handleError = (err) => {
@@ -46,7 +93,7 @@ export class HomePage {
 
   getChargingStation() {
     if(navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(this.handleSuccess, this.handleError, this.options)
+      navigator.geolocation.getCurrentPosition(this.handleSuccess, this.handleError, this.options);
     }
   }
 

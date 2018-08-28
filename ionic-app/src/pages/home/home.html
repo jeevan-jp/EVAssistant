@@ -8,5 +8,16 @@
 </ion-header>
 
 <ion-content padding>
-  <button ion-button (click)="getChargingStation()">Nearest Charging Station</button>
+  <div style="text-align: center;">
+    <h1>Welcome to EV Assistant</h1>
+    <p><i>An assistant for Electric Vehicle users</i></p>
+  </div>
+  <div class="effect_1">
+    <button ion-button (click)="getChargingStation()" id="chargingStn">NEAREST CHARGING STATION</button>
+    <br><br>
+    <a href="geo:?q=Indian Oil Petrol Pump: TULI MOTORS" target="_system" id="openMap" style="display:none;">
+      <button ion-button style="background: #ffa600">CHARGING STATION ON MAP</button>
+    </a>
+  </div>
+  <!-- <a href="geo:?daddr=28.6232361,77.0502432" target="_system">Map</a> -->
 </ion-content>
