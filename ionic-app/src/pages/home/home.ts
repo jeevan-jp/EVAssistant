@@ -60,7 +60,7 @@ export class HomePage {
             //     error => console.log('Error launching navigator', error)
             //   );
             const toast = this.toastCtrl.create({
-              message: 'Nearest:Tagore Garden Extension',
+              message: 'Nearest: Tagore Garden Extension',
               duration: 3000
             });
             toast.present();
