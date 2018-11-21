@@ -1,22 +1,35 @@
 <ion-header>
   <ion-navbar color="primary">
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
+    <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>
     <ion-title>Home</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <div style="text-align: center;">
-    <h1>Welcome to EV Assistant</h1>
-    <p><i>An assistant for Electric Vehicle users</i></p>
+<ion-content>
+  <div id="imageContainer">
+    <div class="bg-image"></div>
+    <div class="centerText">
+      <div style="font-size: 40px;">Welcome to EV Assistant</div>
+      <div style="font-size: 20px">
+        <i>An assistant for Electric Vehicle users</i>
+      </div>
+    </div>
   </div>
+
   <div class="effect_1">
-    <button ion-button (click)="getChargingStation()" id="chargingStn">NEAREST CHARGING STATION</button>
-    <br><br>
-    <a href="geo:?q=Indian Oil Petrol Pump: TULI MOTORS" target="_system" id="openMap" style="display:none;">
-      <button ion-button style="background: #ffa600">CHARGING STATION ON MAP</button>
+    <ion-card>
+      <div id="nearest" (click)="getChargingStation()">
+        SEARCH NEAREST CHARGING STATION
+      </div>
+    </ion-card>
+    <br /><br />
+    <a
+      href="geo:?q=M7F3+34 Delhi"
+      target="_system"
+      id="openMap"
+      style="display:none;"
+    >
+      <ion-card> <div id="onmap">CHARGING STATION ON MAP</div> </ion-card>
     </a>
   </div>
   <!-- <a href="geo:?daddr=28.6232361,77.0502432" target="_system">Map</a> -->
