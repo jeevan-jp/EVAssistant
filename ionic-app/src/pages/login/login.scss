@@ -1,10 +1,23 @@
+ion-card ion-row {
+  padding: 10px;
+  float: right;
 
-ion-card ion-row{
-    padding: 10px;
-    float: right;
+  div button:nth-of-type(1) {
+    margin-right: 10px;
+  }
+}
 
+.middle {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
 
-    div button:nth-of-type(1) {
-           margin-right: 10px;
-    }
+.column {
+  flex-direction: column;
+}
+
+ion-input {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }

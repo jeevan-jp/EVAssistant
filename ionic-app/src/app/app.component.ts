@@ -1,32 +1,35 @@
-import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform, Icon } from 'ionic-angular';
-import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
+import { Component, ViewChild } from "@angular/core";
+import { Nav, Platform, Icon } from "ionic-angular";
+import { StatusBar } from "@ionic-native/status-bar";
+import { SplashScreen } from "@ionic-native/splash-screen";
 
-import { HomePage } from '../pages/home/home';
-import { AboutPage } from '../pages/about/about';
-import { LoginPage } from '../pages/login/login';
+import { HomePage } from "../pages/home/home";
+import { AboutPage } from "../pages/about/about";
+import { LoginPage } from "../pages/login/login";
 
 @Component({
-  templateUrl: 'app.html'
+  templateUrl: "app.html"
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   rootPage: any = HomePage;
 
-  pages: Array<{title: string, icon: string, component: any}>;
+  pages: Array<{ title: string; icon: string; component: any }>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(
+    public platform: Platform,
+    public statusBar: StatusBar,
+    public splashScreen: SplashScreen
+  ) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', icon: 'home', component: HomePage },
-      { title: 'About', icon: 'information-circle', component: AboutPage },
-      { title: 'Login', icon: 'home', component: LoginPage}
+      { title: "Home", icon: "home", component: HomePage },
+      { title: "About", icon: "information-circle", component: AboutPage },
+      { title: "Login", icon: "contact", component: LoginPage }
     ];
-
   }
 
   initializeApp() {
