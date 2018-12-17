@@ -16,6 +16,19 @@
     </div>
   </div>
 
+  <div id="meter">
+    <ngx-gauge
+      [type]="gaugeType"
+      [value]="gaugeValue"
+      [label]="gaugeLabel"
+      [append]="gaugeAppendText"
+      [min]="0"
+      [max]="300"
+      [thresholds]="thresholdConfig"
+    >
+    </ngx-gauge>
+  </div>
+
   <div class="effect_1">
     <ion-card>
       <div id="nearest" (click)="getChargingStation()">

@@ -13,11 +13,16 @@ import { NearestStationProvider } from "../providers/nearest-station/nearest-sta
 import { ProcessHttpmsgProvider } from "../providers/process-httpmsg/process-httpmsg";
 import { LoginPage } from "../pages/login/login";
 import { RegisterPage } from "../pages/register/register";
-// import { RegisterPage } from '../pages/register/register';
+import { NgxGaugeModule } from "ngx-gauge";
 
 @NgModule({
   declarations: [MyApp, HomePage, AboutPage, LoginPage],
-  imports: [BrowserModule, IonicModule.forRoot(MyApp), HttpClientModule],
+  imports: [
+    BrowserModule,
+    IonicModule.forRoot(MyApp),
+    HttpClientModule,
+    NgxGaugeModule
+  ],
   bootstrap: [IonicApp],
   entryComponents: [MyApp, HomePage, AboutPage, LoginPage],
   providers: [

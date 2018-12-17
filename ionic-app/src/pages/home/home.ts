@@ -9,6 +9,16 @@ import { ToastController } from "ionic-angular";
 })
 export class HomePage {
   public isNearestStation = false;
+  public timer;
+  gaugeType = "arch";
+  gaugeValue = 28.3;
+  gaugeLabel = "Speed";
+  gaugeAppendText = "km/hr";
+  thresholdConfig = {
+    "0": { color: "green" },
+    "100": { color: "orange" },
+    "170": { color: "red" }
+  };
 
   constructor(
     public navCtrl: NavController,
@@ -16,6 +26,15 @@ export class HomePage {
     public platform: Platform,
     public toastCtrl: ToastController
   ) {}
+
+  ionViewDidLoad() {
+    console.log("ionViewDidLoad HomePage");
+    this.startCar();
+  }
+
+  ionViewWillLeave() {
+    this.stopTimer();
+  }
 
   handleSuccess = (pos: any) => {
     const latitude = pos.coords.latitude;
@@ -77,33 +96,88 @@ export class HomePage {
       );
     }
   }
+
+  stopTimer = () => {
+    clearInterval(this.timer);
+  };
+
+  startCar = () => {
+    const InitialTime = 100;
+    let time = InitialTime;
+
+    let speed = 0;
+    let x = 1;
+    let toggler = 7;
+
+    const startTimer = () => {
+      let interval = 50;
+      this.timer = setInterval(() => {
+        if (time <= 0) {
+          this.stopTimer();
+        }
+        if (time > InitialTime - 7.5) {
+          x = 1;
+        } else if (time > InitialTime - 10) {
+          x = 2;
+        } else if (time < 10) {
+          x = 3;
+        } else if (time < 5) {
+          x = 4;
+        } else {
+          x = 5;
+        }
+
+        switch (x) {
+          case 1:
+            speed = exponential_increase(speed);
+            console.log("Speed INCRESING RAPIDLY: ", speed);
+            break;
+          case 2:
+            speed = increase_normal(speed);
+            console.log("Speed INCRESING SLOWLY: ", speed);
+            break;
+          case 5:
+            speed = neutral_speed(speed);
+            console.log("Speed NEUTRAL: ", speed);
+            break;
+          case 3:
+            speed = decrease_normal(speed);
+            console.log("Speed DECREASING SLOWLY: ", speed);
+            break;
+          case 4:
+            speed = exponential_decrease(speed);
+            console.log("Speed DECREASING RAPIDLY: ", speed);
+            break;
+        }
+        this.gaugeValue = speed;
+        if (speed < 0) {
+          this.gaugeValue = 0;
+          this.stopTimer();
+        }
+        time = time - 0.08;
+      }, interval);
+    };
+
+    const exponential_increase = speed => {
+      return speed + 2;
+    };
+
+    const increase_normal = speed => {
+      return speed + 1;
+    };
+
+    const neutral_speed = speed => {
+      toggler = toggler == 7 ? -7 : 7;
+      return speed + toggler;
+    };
+
+    const decrease_normal = speed => {
+      return speed - 3;
+    };
+
+    const exponential_decrease = speed => {
+      return speed - 10;
+    };
+    startTimer();
+  };
 }
-
-// Android
-// scheme = 'com.twitter.android';
-// window.open('geo:?daddr=28.6562833,77.116675', "_system");
-// let options: LaunchNavigatorOptions = {
-//   start: 'London, ON',
-//   app: LaunchNavigator.APP.GOOGLE_MAPS
-// };
-
-// this.launchNavigator.navigate('Toronto, ON', options)
-//   .then(
-//     success => console.log('Launched navigator'),
-//     error => console.log('Error launching navigator', error)
-//   );
-// !Android
-
-// iOS
-// appAvailability.check(
-//   scheme, // URI Scheme
-//   function() {  // Success callback
-//       window.open('twitter://user?screen_name=gajotres', '_system', 'location=no');
-//       console.log('Twitter is available');
-//   },
-//   function() {  // Error callback
-//       window.open('https://twitter.com/gajotres', '_system', 'location=no');
-//       console.log('Twitter is not available');
-//   }
-// );
-// !iOS
